@@ -19,4 +19,8 @@ abstract class Transport {
     }
 
     public abstract void go();
+
+    public String toString() {
+        return "Min wheels: " + wheelsCount;
+    }
 }

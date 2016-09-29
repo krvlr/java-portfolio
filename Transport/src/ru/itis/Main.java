@@ -30,7 +30,7 @@ public class Main {
             }
         }
 
-        System.out.println("Min wheels: " + numbOfMinWheels + ".Index in array: " + indexOfMinElem);
+        System.out.println("Index in array: " + indexOfMinElem + "\nObj: " + transports[indexOfMinElem]);
 
     }
 }
