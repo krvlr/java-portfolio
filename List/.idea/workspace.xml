@@ -45,8 +45,8 @@
       <file leaf-file-name="IntegerArrayListTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/itis/IntegerArrayListTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="-93">
+              <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,25 +189,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntegerArrayListTest.testGetOnIncorrectData">
-    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="ru.itis.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="IdeaProjects" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="IntegerArrayListTest.testGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.IntegerArrayListTest.testDeleteByPositionOnCorrectData">
+    <configuration default="false" name="IntegerArrayListTest.testDeleteOnCorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="ru.itis.*" />
@@ -219,7 +202,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="ru.itis" />
       <option name="MAIN_CLASS_NAME" value="ru.itis.IntegerArrayListTest" />
-      <option name="METHOD_NAME" value="testGet" />
+      <option name="METHOD_NAME" value="testDeleteOnCorrectData" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -233,7 +216,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="IntegerArrayListTest.testGetOnIncorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="IntegerArrayListTest.testFindOnCorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="ru.itis.*" />
@@ -245,7 +228,85 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="ru.itis" />
       <option name="MAIN_CLASS_NAME" value="ru.itis.IntegerArrayListTest" />
-      <option name="METHOD_NAME" value="testGetOnIncorrectData" />
+      <option name="METHOD_NAME" value="testFindOnCorrectData" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="IntegerArrayListTest.testDeleteByPositionOnCorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ru.itis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="IdeaProjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="ru.itis" />
+      <option name="MAIN_CLASS_NAME" value="ru.itis.IntegerArrayListTest" />
+      <option name="METHOD_NAME" value="testDeleteByPositionOnCorrectData" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="IntegerArrayListTest.testGetOnCorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ru.itis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="IdeaProjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="ru.itis" />
+      <option name="MAIN_CLASS_NAME" value="ru.itis.IntegerArrayListTest" />
+      <option name="METHOD_NAME" value="testGetOnCorrectData" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="IntegerArrayListTest.testAddOnCorrectData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ru.itis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="IdeaProjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="ru.itis" />
+      <option name="MAIN_CLASS_NAME" value="ru.itis.IntegerArrayListTest" />
+      <option name="METHOD_NAME" value="testAddOnCorrectData" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -644,15 +705,20 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testGet" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testGetOnIncorrectData" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testDeleteOnCorrectData" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testFindOnCorrectData" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testDeleteByPositionOnCorrectData" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testGetOnCorrectData" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testAddOnCorrectData" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testGetOnIncorrectData" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testGet" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testDeleteByPositionOnCorrectData" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testFindOnCorrectData" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testDeleteOnCorrectData" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testAddOnCorrectData" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.IntegerArrayListTest.testGetOnCorrectData" />
       </list>
     </recent_temporary>
   </component>
@@ -666,30 +732,48 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475214637724</updated>
-      <workItem from="1475214639177" duration="7440000" />
+      <workItem from="1475214639177" duration="8556000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="IntegerArrayListTest_testGet - 2016.09.30 at 09h 47m 01s.xml">
-      <configuration name="IntegerArrayListTest.testGet" configurationId="JUnit" />
+    <history-entry file="IntegerArrayListTest_testAddOnCorrectData - 2016.09.30 at 11h 25m 51s.xml">
+      <configuration name="IntegerArrayListTest.testAddOnCorrectData" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="IntegerArrayListTest_testGet - 2016.09.30 at 09h 48m 04s.xml">
-      <configuration name="IntegerArrayListTest.testGet" configurationId="JUnit" />
+    <history-entry file="IntegerArrayListTest_testAddOnCorrectData - 2016.09.30 at 11h 25m 59s.xml">
+      <configuration name="IntegerArrayListTest.testAddOnCorrectData" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="IntegerArrayListTest_testGet - 2016.09.30 at 09h 49m 27s.xml">
-      <configuration name="IntegerArrayListTest.testGet" configurationId="JUnit" />
+    <history-entry file="IntegerArrayListTest_testDeleteByPositionOnCorrectData - 2016.09.30 at 11h 09m 37s.xml">
+      <configuration name="IntegerArrayListTest.testDeleteByPositionOnCorrectData" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="IntegerArrayListTest_testGetOnIncorrectData - 2016.09.30 at 11h 00m 35s.xml">
-      <configuration name="IntegerArrayListTest.testGetOnIncorrectData" configurationId="JUnit" />
+    <history-entry file="IntegerArrayListTest_testDeleteByPositionOnCorrectData - 2016.09.30 at 11h 24m 52s.xml">
+      <configuration name="IntegerArrayListTest.testDeleteByPositionOnCorrectData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IntegerArrayListTest_testDeleteByPositionOnCorrectData - 2016.09.30 at 11h 26m 16s.xml">
+      <configuration name="IntegerArrayListTest.testDeleteByPositionOnCorrectData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IntegerArrayListTest_testDeleteOnCorrectData - 2016.09.30 at 11h 07m 53s.xml">
+      <configuration name="IntegerArrayListTest.testDeleteOnCorrectData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IntegerArrayListTest_testDeleteOnCorrectData - 2016.09.30 at 11h 26m 06s.xml">
+      <configuration name="IntegerArrayListTest.testDeleteOnCorrectData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IntegerArrayListTest_testFindOnCorrectData - 2016.09.30 at 11h 09m 32s.xml">
+      <configuration name="IntegerArrayListTest.testFindOnCorrectData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IntegerArrayListTest_testFindOnCorrectData - 2016.09.30 at 11h 26m 12s.xml">
+      <configuration name="IntegerArrayListTest.testFindOnCorrectData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IntegerArrayListTest_testGetOnCorrectData - 2016.09.30 at 11h 25m 36s.xml">
+      <configuration name="IntegerArrayListTest.testGetOnCorrectData" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7440000" />
+    <option name="totallyTimeSpent" value="8556000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -698,7 +782,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -738,14 +822,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/itis/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/itis/IntegerArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
@@ -754,10 +830,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/itis/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/itis/IntegerArrayListTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        <state relative-caret-position="-93">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
