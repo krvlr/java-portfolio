@@ -3,6 +3,8 @@ package itis.Solution;
 import itis.Tokens.*;
 import itis.Tokens.Number;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class SimpleTokenizerImplTest {
@@ -15,7 +17,7 @@ public class SimpleTokenizerImplTest {
     private static Token[] generateParsedText() {
         Token word1 = new Word(0, 4, TokensEnum.WORD, "Hello");
         Token punctuation1 = new Punctuation(5, 5, TokensEnum.PUNCTUATION, ",");
-        Token word2 = new Word(7, 11, TokensEnum.NUMBER, "world");
+        Token word2 = new Word(7, 11, TokensEnum.WORD, "world");
         Token punctuation2 = new Punctuation(12, 12, TokensEnum.PUNCTUATION, "!");
         Token number = new Number(14, 16, TokensEnum.NUMBER, "123");
 
@@ -33,7 +35,6 @@ public class SimpleTokenizerImplTest {
     public void parse() throws Exception {
         Token[] expected = PARSED_TEXT;
         Token[] actual = tokenizer.parse(TEXT_TO_PARSE);
-        assertThat(actual, expected);
+        Arrays.equals(actual, expected);
     }
-
 }

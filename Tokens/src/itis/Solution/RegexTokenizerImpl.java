@@ -27,32 +27,6 @@ public class RegexTokenizerImpl implements Tokenizer {
             }
             count++;
         }
-
-        /*Pattern wordPattern = Pattern.compile("\\s*[a-zA-Z]+\\s*");
-        Matcher wordMatcher = wordPattern.matcher(text);
-
-        int count = 0;
-        while (wordMatcher.find()){
-            tokens[count] = new Word(wordMatcher.start(), wordMatcher.end()-1, TokensEnum.WORD, wordMatcher.group());
-            count++;
-        }
-
-        Pattern numberPattern = Pattern.compile("\\s*[\\d]+\\s*");
-        Matcher numberMatcher = numberPattern.matcher(text);
-
-        while (numberMatcher.find()){
-            tokens[count] = new Number(numberMatcher.start(), numberMatcher.end()-1, TokensEnum.NUMBER, numberMatcher.group());
-            count++;
-        }
-
-        Pattern punctuationPattern = Pattern.compile("[,.!?]");
-        Matcher punctuationMatcher = punctuationPattern.matcher(text);
-
-        while (punctuationMatcher.find()){
-            tokens[count] = new Punctuation(punctuationMatcher.start(), punctuationMatcher.end()-1, TokensEnum.PUNCTUATION, punctuationMatcher.group());
-            count++;
-        }*/
-
         return tokens;
     }
 }
