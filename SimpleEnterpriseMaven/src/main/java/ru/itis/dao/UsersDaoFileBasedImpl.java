@@ -9,23 +9,48 @@ import java.util.List;
 
 public class UsersDaoFileBasedImpl implements UsersDao {
 
+    private String fileName;
     private BufferedReader fileReader;
     private BufferedWriter fileWriter;
+    private PrintWriter out;
 
     public UsersDaoFileBasedImpl(String fileName) {
+        this.fileName = fileName;
+    }
+
+    private void openFileForRead(){
         try {
-            fileReader = new BufferedReader(new FileReader(fileName));
-            fileWriter = new BufferedWriter(new FileWriter(fileName));
+            if (fileWriter != null) {
+                fileWriter.close();
+            }
+            if (fileReader == null){
+                fileReader = new BufferedReader(new FileReader(fileName));
+            }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        }
-        catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e){
             System.out.println(e.getMessage());
         }
     }
 
+    private void openFileForWrite(){
+        try {
+            if (fileReader != null){
+                fileReader.close();
+            }
+            if (fileWriter == null){
+                fileWriter = new BufferedWriter(new FileWriter(fileName));
+            }
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+        out = new PrintWriter(fileWriter);
+    }
+
     @Override
-    public List<User> getAll() {
+    public List<User> getAll(){
+        openFileForRead();
         List<User> result = new ArrayList<>();
         try {
             String currentLine = fileReader.readLine();
@@ -55,7 +80,8 @@ public class UsersDaoFileBasedImpl implements UsersDao {
 
     @Override
     public User get(int userId) {
-        List<User> allUsers = this.getAll();
+        openFileForRead();
+        List<User> allUsers = getAll();
         for (User user : allUsers){
             if (user.getId()==userId){
                 return user;
@@ -66,13 +92,10 @@ public class UsersDaoFileBasedImpl implements UsersDao {
 
     @Override
     public void save(User user) {
+        openFileForWrite();
         String writeLine = user.getId() + " " + user.getName() + " " + user.getPassword() + " " + user.getAge();
-        try {
-            fileWriter.newLine();
-            fileWriter.write(writeLine);
-        } catch (IOException e) {
-            System.out.println("SomeError: " + e.getMessage());
-        }
+        out.println(writeLine);
+        out.close();
     }
 
     @Override

@@ -34,4 +34,18 @@ public class User {
     public int getId() {
         return id;
     }
+
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || !this.getClass().equals(object.getClass())) {
+            return false;
+        } else {
+            User that = (User)object;
+            return this.id == that.id
+                    && this.name.equals(that.name)
+                    && this.password.equals(that.password)
+                    && this.age == that.age;
+        }
+    }
 }

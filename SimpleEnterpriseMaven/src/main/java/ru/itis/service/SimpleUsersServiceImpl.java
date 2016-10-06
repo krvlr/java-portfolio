@@ -3,11 +3,9 @@ package ru.itis.service;
 import ru.itis.dao.UsersDao;
 import ru.itis.models.User;
 
+import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by admin on 06.10.2016.
- */
 public class SimpleUsersServiceImpl implements SimpleUsersService {
 
     private UsersDao usersDao;
@@ -17,7 +15,12 @@ public class SimpleUsersServiceImpl implements SimpleUsersService {
     }
 
     public boolean isRegistered(String userName, String userPassword) {
-        List<User> registeredUsers = usersDao.getAll();
+        List<User> registeredUsers = null;
+        try {
+            registeredUsers = usersDao.getAll();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         for (User user : registeredUsers) {
             if (user.getName().equals(userName) &&
