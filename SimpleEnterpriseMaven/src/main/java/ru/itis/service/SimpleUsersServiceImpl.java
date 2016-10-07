@@ -14,6 +14,10 @@ public class SimpleUsersServiceImpl implements SimpleUsersService {
         this.usersDao = usersDao;
     }
 
+    public void setUsersDao(UsersDao usersDao){
+        this.usersDao = usersDao;
+    }
+
     public boolean isRegistered(String userName, String userPassword) {
         List<User> registeredUsers = null;
         try {

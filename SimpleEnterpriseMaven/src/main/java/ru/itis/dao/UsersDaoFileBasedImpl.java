@@ -98,26 +98,20 @@ public class UsersDaoFileBasedImpl implements UsersDao {
         out.close();
     }
 
+    private void saveUsersToFile(List<User> users){
+        users.forEach(this::save);
+    }
+
     @Override
     public void delete(int userId) {
-        User deletedUser = new User();
+        User deletedUser;
         List<User> allUsers = getAll();
         for (User user : allUsers) {
             if (user.getId() == userId) {
                 deletedUser = new User(user);
-                allUsers.remove(user);
+                allUsers.remove(deletedUser);
             }
         }
-        String deletedLine = deletedUser.getId() + " " + deletedUser.getName() + " " + deletedUser.getPassword() + " " + deletedUser.getAge();
-        try {
-            String currentLine = fileReader.readLine();
-            while (currentLine != null) {
-                if(deletedLine.equals(currentLine)) continue;
-                fileWriter.write(currentLine + System.getProperty("line.separator"));
-                currentLine = fileReader.readLine();
-            }
-        } catch (IOException e) {
-            System.out.println("SomeError" + e.getMessage());
-        }
+        saveUsersToFile(allUsers);
     }
 }

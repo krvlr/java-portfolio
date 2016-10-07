@@ -8,9 +8,13 @@ import ru.itis.service.SimpleUsersServiceImpl;
 public class Main {
 
     public static void main(String[] args) {
-        UsersDao usersDao = new UsersDaoFileBasedImpl("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleEnterpriseMaven\\users.txt");
+        UsersDao usersDao =
+                UserDaoSupportFactory.getInstance().getUsersDao();
 
-        SimpleUsersService service = new SimpleUsersServiceImpl(usersDao);
+        SimpleUsersService service =
+                UserDaoSupportFactory.getInstance().getUserService();
+
+        service.setUsersDao(usersDao);
 
         System.out.println(service.isRegistered("Marsel", "qwerty007"));
     }
