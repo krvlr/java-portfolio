@@ -15,7 +15,7 @@ public class UsersDaoFileBasedImplTest {
 
     @Before
     public void setUp() throws Exception {
-        usersDao = new UsersDaoFileBasedImpl("C:\\Users\\KFU-user\\Desktop\\JavaWorks\\SimpleEnterpriseMaven\\users.txt");
+        usersDao = new UsersDaoFileBasedImpl();
     }
 
     @Test
@@ -38,12 +38,6 @@ public class UsersDaoFileBasedImplTest {
     public void save() throws Exception{
         User expected = new User(4, "Sergey", "qwerty8", 20);
         usersDao.save(expected);
-        User actual = usersDao.get(4);
-        if(actual.equals(expected)){
-            System.out.println("save test sucsess!");
-        }else{
-            System.out.println("save test fail!");
-        }
     }
 
     @Test

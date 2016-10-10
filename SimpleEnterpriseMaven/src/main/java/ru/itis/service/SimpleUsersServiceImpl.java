@@ -10,7 +10,12 @@ public class SimpleUsersServiceImpl implements SimpleUsersService {
 
     private UsersDao usersDao;
 
-    public SimpleUsersServiceImpl(UsersDao usersDao) {
+    public SimpleUsersServiceImpl() {
+
+    }
+
+    @Override
+    public void setUsersDao(UsersDao usersDao) {
         this.usersDao = usersDao;
     }
 

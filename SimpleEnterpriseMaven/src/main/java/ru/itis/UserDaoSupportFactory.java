@@ -17,6 +17,9 @@ public class UserDaoSupportFactory {
     private UsersDao usersDao;
     private SimpleUsersService usersService;
 
+    static  {
+        instance = new UserDaoSupportFactory();
+    }
 
     private UserDaoSupportFactory(){
         try {
@@ -24,11 +27,12 @@ public class UserDaoSupportFactory {
             properties.load(
                     new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleEnterpriseMaven\\src\\main\\resources\\res.properties"));
 
-            String daoClass = properties.getProperty("dao.class");
-            String serviceClass = properties.getProperty("service.class");
+            String daoClassName = properties.getProperty("dao.class");
+            String serviceClassName = properties.getProperty("service.class");
 
-            this.usersDao = (UsersDao)Class.forName(daoClass).getConstructors(String.class).newInstance("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleEnterpriseMaven\\users.txt");
-            this.usersService = (SimpleUsersService)Class.forName(serviceClass).getConstructors(Class.forName(daoClass).class).newInstance(this.usersDao);
+            this.usersDao = (UsersDao)Class.forName(daoClassName).newInstance();
+            this.usersService = (SimpleUsersService)Class.forName(serviceClassName).newInstance();
+            this.usersService.setUsersDao(this.usersDao);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         } catch (ClassNotFoundException e) {
@@ -40,9 +44,6 @@ public class UserDaoSupportFactory {
             System.out.println(e.getMessage());
             throw new IllegalArgumentException();
         }
-    }
-    static  {
-        instance = new UserDaoSupportFactory();
     }
 
     public UsersDao getUsersDao() {

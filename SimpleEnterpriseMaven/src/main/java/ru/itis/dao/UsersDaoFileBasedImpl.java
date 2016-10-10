@@ -6,59 +6,54 @@ import ru.itis.models.User;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class UsersDaoFileBasedImpl implements UsersDao {
 
-    private String fileName;
     private BufferedReader fileReader;
     private BufferedWriter fileWriter;
-    private PrintWriter out;
+    private String readingFilePath;
+    private String writingFilePath;
 
-    public UsersDaoFileBasedImpl(String fileName) {
-        this.fileName = fileName;
+    public UsersDaoFileBasedImpl() {
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleEnterpriseMaven\\src\\main\\resources\\filePath.properties"));
+            this.readingFilePath = properties.getProperty("dao.filePathHome") + properties.getProperty("dao.inputFile");
+            this.writingFilePath = properties.getProperty("dao.filePathHome") + properties.getProperty("dao.outputFile");
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
-    private void openFileForRead(){
+    private void openReadingStream(){
         try {
-            if (fileWriter != null) {
-                fileWriter.close();
-            }
-            if (fileReader == null){
-                fileReader = new BufferedReader(new FileReader(fileName));
-            }
+            this.fileReader = new BufferedReader(new FileReader(this.readingFilePath));
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    private void openFileForWrite(){
+    private void openWritingStream(){
         try {
-            if (fileReader != null){
-                fileReader.close();
-            }
-            if (fileWriter == null){
-                fileWriter = new BufferedWriter(new FileWriter(fileName));
-            }
+            this.fileWriter = new BufferedWriter(new FileWriter(this.writingFilePath));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-        out = new PrintWriter(fileWriter);
     }
 
     @Override
     public List<User> getAll(){
-        openFileForRead();
+        this.openReadingStream();
         List<User> result = new ArrayList<>();
         try {
-            String currentLine = fileReader.readLine();
+            String currentLine = this.fileReader.readLine();
             while (currentLine != null) {
                 User currentUser = parseStringAsUser(currentLine);
                 result.add(currentUser);
-                currentLine = fileReader.readLine();
+                currentLine = this.fileReader.readLine();
             }
+            this.fileReader.close();
         } catch (IOException e) {
             System.out.println("SomeError: " + e.getMessage());
         }
@@ -80,10 +75,9 @@ public class UsersDaoFileBasedImpl implements UsersDao {
 
     @Override
     public User get(int userId) {
-        openFileForRead();
         List<User> allUsers = getAll();
         for (User user : allUsers){
-            if (user.getId()==userId){
+            if (user.getId() == userId){
                 return user;
             }
         }
@@ -92,26 +86,36 @@ public class UsersDaoFileBasedImpl implements UsersDao {
 
     @Override
     public void save(User user) {
-        openFileForWrite();
+        String writeText = "";
+        for (User userAll : getAll()){
+           writeText += userAll.toString() + System.getProperty("line.separator");
+        }
         String writeLine = user.getId() + " " + user.getName() + " " + user.getPassword() + " " + user.getAge();
-        out.println(writeLine);
-        out.close();
-    }
-
-    private void saveUsersToFile(List<User> users){
-        users.forEach(this::save);
+        writeText += writeLine;
+        try {
+            openWritingStream();
+            this.fileWriter.write(writeText);
+            this.fileWriter.close();
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void delete(int userId) {
-        User deletedUser;
-        List<User> allUsers = getAll();
-        for (User user : allUsers) {
-            if (user.getId() == userId) {
-                deletedUser = new User(user);
-                allUsers.remove(deletedUser);
+        String writeText = "";
+        for (User user : getAll()){
+            if (user.getId() != userId){
+                writeText += user.toString() + System.getProperty("line.separator");
             }
         }
-        saveUsersToFile(allUsers);
+        this.openWritingStream();
+        try {
+            this.fileWriter.write(writeText);
+            this.fileWriter.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
 }

@@ -35,6 +35,11 @@ public class User {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return this.id + " " + this.name + " " + this.password + " " + this.age;
+    }
+
 
     @Override
     public boolean equals(Object object) {
