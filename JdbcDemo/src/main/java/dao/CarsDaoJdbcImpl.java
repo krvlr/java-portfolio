@@ -1,9 +1,8 @@
 package dao;
 
 import models.Car;
-import singletone.JdbcConnection;
+import factories.JdbcConnection;
 
-import java.lang.ref.SoftReference;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,9 +24,9 @@ public class CarsDaoJdbcImpl implements CarsDao {
     private Connection connection;
     private Statement statement;
 
-    public CarsDaoJdbcImpl(){
+    public CarsDaoJdbcImpl(Connection connection){
         try{
-            connection = JdbcConnection.getInstance().getConnection();
+            this.connection = connection;
             statement = connection.createStatement();
         }
         catch (Exception e){

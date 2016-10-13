@@ -1,7 +1,7 @@
 package dao;
 
 import models.Owner;
-import singletone.JdbcConnection;
+import factories.JdbcConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OwnerDaoJdbcImpl implements OwnersDao{
+public class OwnersDaoJdbcImpl implements OwnersDao{
 
     // language=SQL
-    public static final String SQL_SELECT_ALL_OWNERS = "SELECT * FROM owners;";
+    public static final String SQL_SELECT_ALL_OWNERS = "SELECT id_owner, first_name, last_name, date_of_birth, city FROM owners;"; //(DATE_PART('year', current_date) - (DATE_PART('year', owners.date_of_birth))) AS ages
     // language=SQL
     public static final String SQL_ADD_OWNER = "INSERT INTO owners(first_name, last_name, date_of_birth, city) VALUES (?, ?, ?, ?);";
     // language=SQL
@@ -24,9 +24,9 @@ public class OwnerDaoJdbcImpl implements OwnersDao{
     private Connection connection;
     private Statement statement;
 
-    public OwnerDaoJdbcImpl(){
+    public OwnersDaoJdbcImpl(Connection connection){
         try{
-            connection = JdbcConnection.getInstance().getConnection();
+            this.connection = connection;
             statement = connection.createStatement();
         }
         catch (Exception e){
@@ -66,7 +66,7 @@ public class OwnerDaoJdbcImpl implements OwnersDao{
 
             preparedStatement.setString(1, owner.getFirstName());
             preparedStatement.setString(2, owner.getLastName());
-            preparedStatement.setString(3, String.valueOf(owner.getDateOfBirth()));
+            preparedStatement.setString(3, new java.sql.Date(owner.getDateOfBirth()));
             preparedStatement.setString(4, owner.getCity());
 
             preparedStatement.execute();

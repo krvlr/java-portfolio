@@ -1,6 +1,7 @@
 package tests;
 
 import dao.CarsDaoJdbcImpl;
+import factories.JdbcConnection;
 import models.Car;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class CarsDaoJdbcImplTest {
 
     @Before
     public void setUp() throws Exception {
-        carsDaoJdbc = new CarsDaoJdbcImpl();
+        carsDaoJdbc = new CarsDaoJdbcImpl(JdbcConnection.getInstance().getConnection());
     }
 
     @Test

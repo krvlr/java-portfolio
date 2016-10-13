@@ -1,6 +1,7 @@
 package tests;
 
-import dao.OwnerDaoJdbcImpl;
+import dao.OwnersDaoJdbcImpl;
+import factories.JdbcConnection;
 import models.Owner;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,12 +9,12 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.List;
 
-public class OwnerDaoJdbcImplTest {
+public class OwnersDaoJdbcImplTest {
 
-    private OwnerDaoJdbcImpl ownerDaoJdbc;
+    private OwnersDaoJdbcImpl ownerDaoJdbc;
     @Before
     public void setUp() throws Exception {
-        ownerDaoJdbc = new OwnerDaoJdbcImpl();
+        ownerDaoJdbc = new OwnersDaoJdbcImpl(JdbcConnection.getInstance().getConnection());
     }
 
     @Test
@@ -32,13 +33,13 @@ public class OwnerDaoJdbcImplTest {
 
     @Test
     public void add() throws Exception {
-        Owner owner = new Owner(11, "Vlad", "Kiselev", new Date(1988,1,1), "Kirov");
+        Owner owner = new Owner(11, "Vlad", "Kiselev", new Date(1986, 01, 01), "Kirov");
         ownerDaoJdbc.add(owner);
     }
 
     @Test
     public void update() throws Exception {
-        Owner owner = new Owner(11, "Vlad", "Kiselev", new Date(1988,1,1), "Kazan");
+        Owner owner = new Owner(11, "Vlad", "Kiselev", new Date(1986, 01, 01), "Kazan");
         ownerDaoJdbc.update(owner);
     }
 
