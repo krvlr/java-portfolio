@@ -22,21 +22,17 @@ public class JdbcConnection {
         properties = new Properties();
         try {
             properties.load(
-                    new FileInputStream("C:\\Users\\KFU-user\\Desktop\\JavaWorks\\JdbcDemo\\src\\main\\resources\\JdbcProperties.properties"));
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+                    new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\JdbcDemo\\src\\main\\resources\\JdbcProperties.properties"));
 
-        String driver = properties.getProperty("connection.driver");
-        String connectionURL = properties.getProperty("connection.connectionURL");
-        String userName = properties.getProperty("connection.userName");
-        String userPassword = properties.getProperty("connection.userPassword");
+            String driver = properties.getProperty("connection.driver");
+            String connectionURL = properties.getProperty("connection.connectionURL");
+            String userName = properties.getProperty("connection.userName");
+            String userPassword = properties.getProperty("connection.userPassword");
 
-        try{
             Class.forName(driver);
             connection = DriverManager.getConnection(connectionURL, userName, userPassword);
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e);
         }
     }
 

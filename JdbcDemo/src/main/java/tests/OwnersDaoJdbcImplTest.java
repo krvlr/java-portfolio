@@ -5,8 +5,7 @@ import factories.JdbcConnection;
 import models.Owner;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class OwnersDaoJdbcImplTest {
@@ -33,13 +32,13 @@ public class OwnersDaoJdbcImplTest {
 
     @Test
     public void add() throws Exception {
-        Owner owner = new Owner(11, "Vlad", "Kiselev", new Date(1986, 01, 01), "Kirov");
+        Owner owner = new Owner(11, "Vlad", "Kiselev", new GregorianCalendar(1986,01,01).getTime(), "Kirov");
         ownerDaoJdbc.add(owner);
     }
 
     @Test
     public void update() throws Exception {
-        Owner owner = new Owner(11, "Vlad", "Kiselev", new Date(1986, 01, 01), "Kazan");
+        Owner owner = new Owner(11, "Vlad", "Kiselev", new GregorianCalendar(1986,01,01).getTime(), "Kazan");
         ownerDaoJdbc.update(owner);
     }
 

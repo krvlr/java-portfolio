@@ -1,5 +1,7 @@
 package models;
 
+import com.google.common.base.MoreObjects;
+
 public class Car {
 
     private int id;
@@ -26,6 +28,10 @@ public class Car {
 
     @Override
     public String toString() {
-        return this.id + " " + this.mileage + " " + this.colour;
+        return MoreObjects.toStringHelper(this)
+                .add("id", this.id)
+                .add("name", this.mileage)
+                .add("colour", this.colour)
+                .toString();
     }
 }

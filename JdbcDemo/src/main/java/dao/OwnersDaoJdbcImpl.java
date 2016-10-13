@@ -7,7 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class OwnersDaoJdbcImpl implements OwnersDao{
@@ -15,9 +19,9 @@ public class OwnersDaoJdbcImpl implements OwnersDao{
     // language=SQL
     public static final String SQL_SELECT_ALL_OWNERS = "SELECT id_owner, first_name, last_name, date_of_birth, city FROM owners;"; //(DATE_PART('year', current_date) - (DATE_PART('year', owners.date_of_birth))) AS ages
     // language=SQL
-    public static final String SQL_ADD_OWNER = "INSERT INTO owners(first_name, last_name, date_of_birth, city) VALUES (?, ?, ?, ?);";
+    public static final String SQL_ADD_OWNER = "INSERT INTO owners(first_name, last_name, date_of_birth, city) VALUES (?, ?, ?::date, ?);";
     // language=SQL
-    public static final String SQL_UPDATE_OWNER = "UPDATE owners SET first_name = ?, last_name = ?, date_of_birth = ?, city = ? WHERE id_owner = ?;";
+    public static final String SQL_UPDATE_OWNER = "UPDATE owners SET first_name = ?, last_name = ?, date_of_birth = ?::date, city = ? WHERE id_owner = ? ;";
     // language=SQL
     public static final String SQL_DELETE_OWNER = "DELETE FROM owners WHERE id_owner = ?;";
 
@@ -66,7 +70,7 @@ public class OwnersDaoJdbcImpl implements OwnersDao{
 
             preparedStatement.setString(1, owner.getFirstName());
             preparedStatement.setString(2, owner.getLastName());
-            preparedStatement.setString(3, new java.sql.Date(owner.getDateOfBirth()));
+            preparedStatement.setString(3, new SimpleDateFormat("yyyy-MM-dd").format((owner.getDateOfBirth())));
             preparedStatement.setString(4, owner.getCity());
 
             preparedStatement.execute();
@@ -84,9 +88,9 @@ public class OwnersDaoJdbcImpl implements OwnersDao{
 
             preparedStatement.setString(1, owner.getFirstName());
             preparedStatement.setString(2, owner.getLastName());
-            preparedStatement.setString(3, String.valueOf(owner.getDateOfBirth()));
+            preparedStatement.setString(3, new SimpleDateFormat("yyyy-MM-dd").format((owner.getDateOfBirth())));
             preparedStatement.setString(4, owner.getCity());
-            preparedStatement.setString(5, String.valueOf(owner.getId()));
+            preparedStatement.setInt(5, owner.getId());
 
             preparedStatement.execute();
         }

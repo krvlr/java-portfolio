@@ -1,5 +1,7 @@
 package models;
 
+import com.google.common.base.MoreObjects;
+
 import java.util.Date;
 
 public class Owner {
@@ -40,6 +42,12 @@ public class Owner {
 
     @Override
     public String toString() {
-        return this.id + " " + this.firstName + " " + this.lastName + " " + this.dateOfBirth + " " + this.city;
+        return MoreObjects.toStringHelper(this)
+                .add("id", this.id)
+                .add("firstName", this.firstName)
+                .add("lastName", this.lastName)
+                .add("dateOfBirth", this.dateOfBirth)
+                .add("city", this.city)
+                .toString();
     }
 }

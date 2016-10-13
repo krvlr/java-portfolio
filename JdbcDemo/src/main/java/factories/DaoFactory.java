@@ -3,9 +3,12 @@ package factories;
 import dao.CarsDao;
 import dao.OwnersDao;
 import models.Owner;
+import org.postgresql.core.ConnectionFactory;
 import service.OwnersService;
 
 import java.io.FileInputStream;
+import java.lang.reflect.Constructor;
+import java.sql.Connection;
 import java.util.Properties;
 
 public class DaoFactory {
@@ -13,7 +16,7 @@ public class DaoFactory {
     public static DaoFactory instance;
 
     private CarsDao carsDao;
-    private OwnersDao  ownerDao;
+    private OwnersDao ownersDao;
 
     private Properties properties;
 
@@ -25,16 +28,19 @@ public class DaoFactory {
         try {
             properties = new Properties();
             properties.load(
-                    new FileInputStream("C:\\Users\\KFU-user\\Desktop\\JavaWorks\\JdbcDemo\\src\\main\\resources\\DaoFactoryProp.properties"));
+                    new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\JdbcDemo\\src\\main\\resources\\DaoFactoryProp.properties"));
 
             String carsDaoClassName = properties.getProperty("carsDao.class");
             String ownersDaoClassName = properties.getProperty("ownersDao.class");
 
-            this.carsDao = (CarsDao)Class.forName(carsDaoClassName).newInstance();
-            this.ownerDao = (OwnersDao)Class.forName(ownersDaoClassName).newInstance();
+            Constructor carConstructor = Class.forName(carsDaoClassName).getConstructor(Connection.class);
+            this.carsDao = (CarsDao)carConstructor.newInstance(JdbcConnection.getInstance().getConnection());
+
+            Constructor ownerConstructor = Class.forName(ownersDaoClassName).getConstructor(Connection.class);
+            this.ownersDao = (OwnersDao)ownerConstructor.newInstance(JdbcConnection.getInstance().getConnection());
 
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -47,7 +53,7 @@ public class DaoFactory {
     }
 
     public OwnersDao getOwnersDao() {
-        return ownerDao;
+        return ownersDao;
     }
 
 }

@@ -15,8 +15,17 @@ public class OwnersServiceImpl implements OwnersService {
         return ownersDao.find(id);
     }
 
+    @Override
+    public void addOwner(Owner owner) {
+        ownersDao.add(owner);
+    }
+
     public void updateOwner(Owner owner) {
-        //verifyUserExist(owner.getId());
         this.ownersDao.update(owner);
+    }
+
+    @Override
+    public void deleteOwner(int id) {
+        ownersDao.delete(id);
     }
 }
