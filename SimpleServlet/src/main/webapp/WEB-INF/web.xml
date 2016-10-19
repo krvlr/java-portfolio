@@ -6,13 +6,13 @@
          version="3.0">
 
     <servlet>
-        <servlet-name>MyServlet</servlet-name>
+        <servlet-name>FirstServlet</servlet-name>
         <servlet-class>ru.itis.Servlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MyServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>FirstServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
     </servlet-mapping>
 
 </web-app>
