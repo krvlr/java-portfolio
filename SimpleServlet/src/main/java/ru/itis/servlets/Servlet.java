@@ -27,14 +27,12 @@ public class Servlet extends HttpServlet {
     // response - сюда вы положите ответ
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=windows-1251");
+        response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
 
         List<Owner> allOwners = ownerService.getAllUser();
-        out.println("<h1>All owners</h1>");
-        for (Owner owner: allOwners) {
-            out.println("<h1>" + owner + "</h1>");
-        }
+        request.setAttribute("allOwners", allOwners);
+        getServletContext().getRequestDispatcher("/users.jsp").forward(request, response);
     }
 }

@@ -5,6 +5,8 @@ import ru.itis.models.Owner;
 
 import java.util.List;
 
+import static ru.itis.utils.Verifier.verifyUserExist;
+
 public class OwnersServiceImpl implements OwnersService {
 
     private OwnersDao ownersDao;
@@ -32,6 +34,7 @@ public class OwnersServiceImpl implements OwnersService {
 
     @Override
     public void deleteOwner(int id) {
+        verifyUserExist(id);
         ownersDao.delete(id);
     }
 }
