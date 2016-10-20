@@ -1,4 +1,4 @@
-package ru.itis;
+package ru.itis.servlets;
 
 import ru.itis.factories.ServiceFactory;
 import ru.itis.models.Owner;
@@ -13,20 +13,28 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class Servlet extends HttpServlet {
+
+    OwnersService ownerService;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ownerService = ServiceFactory.getInstance().getOwnerService();
+    }
+
     // метод, реагирующий на http-запрос
     // request - здесь лежит сам запрос
     // response - сюда вы положите ответ
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html; charset=windows-1251");
 
-        OwnersService ownerService = ServiceFactory.getInstance().getOwnerService();
-        List<Owner> allOwners = ownerService.getAllUser();
-        String message = "All owners\n";
-        for (Owner owner: allOwners){
-            message += owner.toString();
-        }
         PrintWriter out = response.getWriter();
-        out.println("<h1>" + message + "</h1>");
+
+        List<Owner> allOwners = ownerService.getAllUser();
+        out.println("<h1>All owners</h1>");
+        for (Owner owner: allOwners) {
+            out.println("<h1>" + owner + "</h1>");
+        }
     }
 }

@@ -24,7 +24,7 @@ public class ServiceFactory {
     private ServiceFactory() {
         this.properties = new Properties();
         try {
-            properties.load(new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleServlet\\src\\resources\\ServiceFactoryProp.properties"));
+            properties.load(new FileInputStream("C:\\Users\\KFU-user\\Desktop\\JavaWorks\\SimpleServlet\\src\\resources\\ServiceFactoryProp.properties"));
 
             String carsServiceClassName = properties.getProperty("carsService.class");
             Constructor constructorCarsService = Class.forName(carsServiceClassName).getConstructor(CarsDao.class);

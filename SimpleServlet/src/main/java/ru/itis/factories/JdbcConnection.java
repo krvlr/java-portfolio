@@ -22,7 +22,7 @@ public class JdbcConnection {
         properties = new Properties();
         try {
             properties.load(
-                    new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleServlet\\src\\resources\\JdbcProperties.properties"));
+                    new FileInputStream("C:\\Users\\KFU-user\\Desktop\\JavaWorks\\SimpleServlet\\src\\resources\\JdbcProperties.properties"));
 
             String driver = properties.getProperty("connection.driver");
             String connectionURL = properties.getProperty("connection.connectionURL");
