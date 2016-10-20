@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 public class Servlet extends HttpServlet {
 
@@ -22,17 +23,17 @@ public class Servlet extends HttpServlet {
         ownerService = ServiceFactory.getInstance().getOwnerService();
     }
 
-    // метод, реагирующий на http-запрос
-    // request - здесь лежит сам запрос
-    // response - сюда вы положите ответ
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
+        GregorianCalendar cal = new GregorianCalendar();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            cal.setTime(sdf.parse(request.getParameter("dateOfBirth")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        ownerService.addOwner(new Owner(11, request.getParameter("firstName"),request.getParameter("lastName"), cal.getTime(),request.getParameter("city")));
         response.setContentType("text/html");
-
-        PrintWriter out = response.getWriter();
-
-        List<Owner> allOwners = ownerService.getAllUser();
-        request.setAttribute("allOwners", allOwners);
         getServletContext().getRequestDispatcher("/users.jsp").forward(request, response);
     }
 }

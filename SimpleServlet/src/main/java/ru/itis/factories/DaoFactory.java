@@ -25,7 +25,7 @@ public class DaoFactory {
         try {
             properties = new Properties();
             properties.load(
-                    new FileInputStream("C:\\Users\\KFU-user\\Desktop\\JavaWorks\\SimpleServlet\\src\\resources\\DaoFactoryProp.properties"));
+                    new FileInputStream("C:\\Users\\nanob\\Desktop\\JavaWorks\\SimpleServlet\\src\\resources\\DaoFactoryProp.properties"));
 
             String carsDaoClassName = properties.getProperty("carsDao.class");
             String ownersDaoClassName = properties.getProperty("ownersDao.class");

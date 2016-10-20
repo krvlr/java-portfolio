@@ -26,6 +26,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "id:" + this.id + " mileage:" + this.mileage + " colour:" + this.colour + "\n";
+        return "id:" + this.id + " mileage:" + this.mileage + " colour:" + this.colour;
     }
 }
