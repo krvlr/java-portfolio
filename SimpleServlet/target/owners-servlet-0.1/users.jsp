@@ -5,8 +5,18 @@
     <title>Add owner</title>
 </head>
 <body>
-    <form action="users" method="get">
-        <h1> Add owner </h1>
+    <h1>Список владельцев</h1>
+    <p>
+        <c:forEach items="${requestScope.allOwners}" var="currentUser">
+            <tr>
+                <td><c:out value="${currentUser}" /><td>
+                <br>
+            </tr>
+        </c:forEach>
+    </p>
+
+    <h1>Добавление нового владельца</h1>
+    <form action="users" method="post">
         First Name: <input type="text" name="firstName"> <br>
         Last Name: <input type="text" name="lastName"> <br>
         Date of birth <input type="date" name="dateOfBirth" value="1990-06-01"> <br>
