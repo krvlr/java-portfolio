@@ -1,0 +1,32 @@
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Gerasim', 'Popov', '1994-11-28', 'Kazan', 'gerasim_popov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Robert', 'Alexeev', '1974-1-5', 'Chelny', 'robert_alexeev', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Nikolay', 'Ivanov', '1985-6-27', 'Kazan', 'nikolay_ivanov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Maksim', 'Michailov', '1995-4-14', 'Sviyazhsk', 'maksim_michailov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Alexnder', 'Agapov', '1979-3-2', 'Kazan', 'alexander_agapov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Marsel', 'Sidikov', '1994-2-19', 'Kazan', 'marsel_sidikov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Anton', 'Ivanov', '1986-11-28', 'Sviyazhsk', 'anton_ivanov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Alexey', 'Nikolayev', '1975-9-3', 'Kazan', 'alexey_nikolayev', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Konstantin', 'Pavlov', '1982-8-7', 'Cheboksary', 'konstantin_pavlov', '123456789');
+INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES ('Konstantin', 'Vasilyev', '1993-5-12', 'Cheboksary', 'kontantin_vasilyev', '123456789');
+
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('kia', 'rio', 12354, 'green');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('mersedes', 'C180', 89, 'blue');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('audi', 'a6', 9587, 'black');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('audi', 'q4', 59, 'white');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('toyota', 'corolla', 48, 'yellow');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('lada', '2107', 999999, 'orange');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('lada', 'largus', 126, 'brown');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('lada', 'kalina', 364, 'green');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('lada', 'priora', 784, 'black');
+INSERT INTO cars(brand, model, mileage, colour) VALUES ('lexus', 'rx5', 1, 'silver');
+
+INSERT INTO cars_users(id_car, id_owner) VALUES (1, 1);
+INSERT INTO cars_users(id_car, id_owner) VALUES (2, 2);
+INSERT INTO cars_users(id_car, id_owner) VALUES (3, 3);
+INSERT INTO cars_users(id_car, id_owner) VALUES (4, 4);
+INSERT INTO cars_users(id_car, id_owner) VALUES (5, 5);
+INSERT INTO cars_users(id_car, id_owner) VALUES (6, 6);
+INSERT INTO cars_users(id_car, id_owner) VALUES (7, 7);
+INSERT INTO cars_users(id_car, id_owner) VALUES (8, 8);
+INSERT INTO cars_users(id_car, id_owner) VALUES (9, 9);
+INSERT INTO cars_users(id_car, id_owner) VALUES (10, 10);
