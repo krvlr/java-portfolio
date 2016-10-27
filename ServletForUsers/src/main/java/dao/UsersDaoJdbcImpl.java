@@ -15,9 +15,9 @@ public class UsersDaoJdbcImpl implements UsersDao {
     // language=SQL
     public static final String SQL_SELECT_ALL_USERS = "SELECT * FROM users;";
     // language=SQL
-    public static final String SQL_ADD_USERS= "INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES (?, ?, ?, ?, ?, ?);";
+    public static final String SQL_ADD_USERS = "INSERT INTO users(first_name, last_name, date_of_birth, city, login, password) VALUES (?, ?, ?::date, ?, ?, ?);";
     // language=SQL
-    public static final String SQL_UPDATE_USERS = "UPDATE users SET first_name = ?, last_name = ?, date_of_birth = ?, city = ?, login = ?, password = ? WHERE id_user = ? ;";
+    public static final String SQL_UPDATE_USERS = "UPDATE users SET first_name = ?, last_name = ?, date_of_birth::date = ?, city = ?, login = ?, password = ? WHERE id_user = ? ;";
     // language=SQL
     public static final String SQL_DELETE_USERS = "DELETE FROM users WHERE id_user = ?;";
     // language=SQL
@@ -73,7 +73,7 @@ public class UsersDaoJdbcImpl implements UsersDao {
             preparedStatement.setString(3, new SimpleDateFormat("yyyy-MM-dd").format((user.getDateOfBirth())));
             preparedStatement.setString(4, user.getCity());
             preparedStatement.setString(5, user.getLogin());
-            preparedStatement.setString(6, passwordHashing(user));
+            preparedStatement.setString(6, user.getPassword());
 
             preparedStatement.execute();
         }
@@ -93,7 +93,7 @@ public class UsersDaoJdbcImpl implements UsersDao {
             preparedStatement.setString(3, new SimpleDateFormat("yyyy-MM-dd").format((user.getDateOfBirth())));
             preparedStatement.setString(4, user.getCity());
             preparedStatement.setString(5, user.getLogin());
-            preparedStatement.setString(6, passwordHashing(user));
+            preparedStatement.setString(6, user.getPassword());
             preparedStatement.setInt(7, user.getId());
 
             preparedStatement.execute();
@@ -115,11 +115,6 @@ public class UsersDaoJdbcImpl implements UsersDao {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-    }
-
-    public String passwordHashing(User user) {
-        String md5Hex = DigestUtils.md5Hex(user.getPassword());
-        return md5Hex;
     }
 
     @Override

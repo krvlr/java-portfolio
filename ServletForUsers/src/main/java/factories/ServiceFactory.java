@@ -1,7 +1,9 @@
 package factories;
 
+import dao.CarsAndUsersDao;
 import dao.CarsDao;
 import dao.UsersDao;
+import service.CarsAndUsersService;
 import service.CarsService;
 import service.UsersService;
 
@@ -16,6 +18,7 @@ public class ServiceFactory {
 
     private CarsService carsService;
     private UsersService usersService;
+    private CarsAndUsersService carsAndUsersService;
 
     static {
         instance = new ServiceFactory();
@@ -34,6 +37,10 @@ public class ServiceFactory {
             Constructor constructorUsersService = Class.forName(usersServiceClassName).getConstructor(UsersDao.class);
             this.usersService = (UsersService)constructorUsersService.newInstance(DaoFactory.getInstance().getUsersDao());
 
+            String carsAndUsersServiceClassName = properties.getProperty("carsAndUsersService.class");
+            Constructor constructorCarsAndUsersService = Class.forName(carsAndUsersServiceClassName).getConstructor(CarsAndUsersDao.class);
+            this.carsAndUsersService = (CarsAndUsersService)constructorCarsAndUsersService.newInstance(DaoFactory.getInstance().getCarsAndUsersDao());
+
         } catch (Exception e) {
             throw new IllegalArgumentException(e);
         }
@@ -50,4 +57,6 @@ public class ServiceFactory {
     public UsersService getUsersService() {
         return this.usersService;
     }
+
+    public CarsAndUsersService getCarsAndUsersDao() { return  this.carsAndUsersService; }
 }

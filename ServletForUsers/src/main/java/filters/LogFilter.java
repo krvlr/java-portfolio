@@ -1,30 +1,31 @@
 package filters;
 
+import factories.ServiceFactory;
+import service.UsersService;
+
 import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class LogFilter {
-    private String messageParam;
+    UsersService usersService;
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        this.messageParam = filterConfig.getInitParameter("message-param");
+        this.usersService = ServiceFactory.getInstance().getUsersService();
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        String login = servletRequest.getParameter("login");
-        String password = servletRequest.getParameter("password");
-        String token = "";
-        System.out.println(messageParam + " " + login + " " + password);
-        if (login == null & password == null) {
-            token = ((HttpServletRequest)servletRequest).getCookies()[0].getValue();
+
+        Cookie cookie[] = ((HttpServletRequest) servletRequest).getCookies();
+        if (cookie != null){
+            for (int i = cookie.length-1; i > 0; i--){
+                if (this.usersService.findUserByToken(cookie[i].getValue()) != null) {
+                    filterChain.doFilter(servletRequest, servletResponse);
+                    break;
+                }
+            }
         }
-
-        if (login != null & password != null) {
-
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
-
     }
 
     public void destroy() {

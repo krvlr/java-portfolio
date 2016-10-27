@@ -1,5 +1,6 @@
 package factories;
 
+import dao.CarsAndUsersDao;
 import dao.CarsDao;
 import dao.UsersDao;
 
@@ -14,6 +15,7 @@ public class DaoFactory {
 
     private CarsDao carsDao;
     private UsersDao usersDao;
+    private CarsAndUsersDao carsAndUsersDao;
 
     private Properties properties;
 
@@ -29,12 +31,16 @@ public class DaoFactory {
 
             String carsDaoClassName = properties.getProperty("carsDao.class");
             String usersDaoClassName = properties.getProperty("usersDao.class");
+            String carsAndUsersDaoClassName = properties.getProperty("carsAndUsersDao.class");
 
             Constructor carConstructor = Class.forName(carsDaoClassName).getConstructor(Connection.class);
             this.carsDao = (CarsDao)carConstructor.newInstance(JdbcConnection.getInstance().getConnection());
 
             Constructor userConstructor = Class.forName(usersDaoClassName).getConstructor(Connection.class);
             this.usersDao = (UsersDao)userConstructor.newInstance(JdbcConnection.getInstance().getConnection());
+
+            Constructor carsAndUsersConstructor = Class.forName(carsAndUsersDaoClassName).getConstructor(Connection.class);
+            this.carsAndUsersDao = (CarsAndUsersDao)carsAndUsersConstructor.newInstance(JdbcConnection.getInstance().getConnection());
 
         }catch (Exception e){
             throw new IllegalArgumentException(e);
@@ -52,5 +58,7 @@ public class DaoFactory {
     public UsersDao getUsersDao() {
         return usersDao;
     }
+
+    public CarsAndUsersDao getCarsAndUsersDao(){ return  carsAndUsersDao;}
 
 }
