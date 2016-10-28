@@ -15,6 +15,16 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/list</url-pattern>
+        <url-pattern>/addCar</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>ListServlet</servlet-name>
         <servlet-class>servlets.ListServlet</servlet-class>

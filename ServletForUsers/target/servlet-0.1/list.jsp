@@ -24,7 +24,6 @@
                 <td><c:out value="${currentUser.city}" /></td>
             </c:if>
         </c:forEach>
-            &#9;
         <c:forEach items="${requestScope.carsJsp}" var="currentCar">
             <c:if test="${currentCarAndUser.idCar == currentCar.id}">
                 <td><c:out value="${currentCar.brand}" /></td>
@@ -38,6 +37,18 @@
     </c:forEach>
     <form>
         <input type="button" value="Add car" onclick="window.location='/addCar'">
+    </form>
+    <script language="JavaScript" type="text/javascript">
+        function loginOut()
+        {
+            var cookie_date = new Date ( );  // Текущая дата и время
+            cookie_date.setTime ( cookie_date.getTime() - 1 );
+            document.cookie = "token" + "=; expires=" + cookie_date.toGMTString();
+            window.location='/login';
+        }
+    </script>
+    <form>
+        <input type="button" value="Login out" onclick="loginOut()">
     </form>
 </body>
 </html>

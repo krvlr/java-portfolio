@@ -2,6 +2,7 @@ package dao;
 
 import models.Car;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,10 +23,10 @@ public class CarsDaoJdbcImpl implements CarsDao {
     private Connection connection;
     private Statement statement;
 
-    public CarsDaoJdbcImpl(Connection connection){
+    public CarsDaoJdbcImpl(DataSource connection){
         try{
-            this.connection = connection;
-            statement = connection.createStatement();
+            this.connection = connection.getConnection();
+            statement = this.connection.createStatement();
         }
         catch (Exception e){
             System.out.println(e.getMessage());

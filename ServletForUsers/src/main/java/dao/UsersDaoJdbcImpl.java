@@ -3,6 +3,7 @@ package dao;
 import models.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,10 +29,10 @@ public class UsersDaoJdbcImpl implements UsersDao {
     private Connection connection;
     private Statement statement;
 
-    public UsersDaoJdbcImpl(Connection connection){
+    public UsersDaoJdbcImpl(DataSource connection){
         try{
-            this.connection = connection;
-            statement = connection.createStatement();
+            this.connection = connection.getConnection();
+            statement = this.connection.createStatement();
         }
         catch (Exception e){
             System.out.println(e.getMessage());

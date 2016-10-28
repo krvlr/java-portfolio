@@ -1,7 +1,8 @@
 package servlets;
 
-import factories.ServiceFactory;
 import models.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.UsersService;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,8 @@ public class LoginServlet extends HttpServlet {
         } catch (ServletException e) {
             e.printStackTrace();
         }
-        usersService = ServiceFactory.getInstance().getUsersService();
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:context.xml");
+        usersService = (UsersService)context.getBean("usersService");
     }
 
     public void doGet(HttpServletRequest request,

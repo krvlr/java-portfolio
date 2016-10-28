@@ -4,6 +4,7 @@ import models.Car;
 import models.CarUser;
 import models.User;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,10 +21,10 @@ public class CarsAndUsersDaoImpl implements CarsAndUsersDao {
     private Connection connection;
     private Statement statement;
 
-    public CarsAndUsersDaoImpl(Connection connection) {
+    public CarsAndUsersDaoImpl(DataSource connection) {
         try{
-            this.connection = connection;
-            statement = connection.createStatement();
+            this.connection = connection.getConnection();
+            statement = this.connection.createStatement();
         }
         catch (Exception e){
             System.out.println(e.getMessage());

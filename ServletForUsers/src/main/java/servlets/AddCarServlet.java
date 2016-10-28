@@ -1,8 +1,9 @@
 package servlets;
 
-import factories.ServiceFactory;
 import models.Car;
 import models.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.CarsAndUsersService;
 import service.CarsService;
 import service.UsersService;
@@ -27,9 +28,10 @@ public class AddCarServlet extends HttpServlet {
         } catch (ServletException e) {
             e.printStackTrace();
         }
-        usersService = ServiceFactory.getInstance().getUsersService();
-        carsService = ServiceFactory.getInstance().getCarsService();
-        carsAndUsersService = ServiceFactory.getInstance().getCarsAndUsersDao();
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:context.xml");
+        usersService = (UsersService)context.getBean("usersService");
+        carsService = (CarsService)context.getBean("carsService");
+        carsAndUsersService = (CarsAndUsersService)context.getBean("carsAndUsersService");
     }
 
     public void doGet(HttpServletRequest request,

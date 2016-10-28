@@ -11,16 +11,39 @@
     <title>Add auto</title>
 </head>
 <body>
+<script type="text/javascript">
+    function validateForm()
+    {
+        var brand=document.forms["Form"]["brand"].value;
+        var model=document.forms["Form"]["model"].value;
+        var mileage=document.forms["Form"]["mileage"].value;
+        var colour=document.forms["Form"]["colour"].value;
+        if (brand==null || brand=="", model==null || model=="", mileage==null || mileage==0, colour==null || colour=="")
+        {
+            alert("Заполните все поля");
+            return false;
+        }
+    }
+</script>
     <h1>Add auto</h1>
-    <form action="addCar" method="post">
+    <form action="addCar" onsubmit="return validateForm()" method="post">
         Brand: <input type="text" name="brand"> <br>
         Model: <input type="text" name="model"> <br>
         Mileage: <input type="text" name="mileage"> <br>
         Colour: <input type="text" name="colour"> <br>
         <input type="submit" value="Add car">
     </form>
+    <script language="JavaScript" type="text/javascript">
+    function loginOut()
+    {
+        var cookie_date = new Date ( );  // Текущая дата и время
+        cookie_date.setTime ( cookie_date.getTime() - 1 );
+        document.cookie = "token" + "=; expires=" + cookie_date.toGMTString();
+        window.location='/login';
+    }
+</script>
     <form>
-        <input type="button" value="Login" onclick="window.location='/list'">
+        <input type="button" value="Login out" onclick="loginOut()">
     </form>
 </body>
 </html>
