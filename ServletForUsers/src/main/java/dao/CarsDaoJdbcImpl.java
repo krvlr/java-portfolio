@@ -1,51 +1,42 @@
 package dao;
 
 import models.Car;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CarsDaoJdbcImpl implements CarsDao {
     // language=SQL
     public static final String SQL_SELECT_ALL_CARS = "SELECT * FROM cars;";
     // language=SQL
-    public static final String SQL_ADD_CAR = "INSERT INTO cars(brand, model, mileage, colour) VALUES (?, ?, ?, ?);";
+    public static final String SQL_ADD_CAR = "INSERT INTO cars(brand, model, mileage, colour) VALUES (:brand, :model, :mileage, :colour);";
     // language=SQL
-    public static final String SQL_UPDATE_CAR = "UPDATE cars SET brand = ?, model = ?, mileage = ?, colour = ? WHERE id_car = ?;";
+    public static final String SQL_UPDATE_CAR = "UPDATE cars SET brand = :brand, model = :model, mileage = :mileage, colour = :colour WHERE id_car = :idCar;";
     // language=SQL
-    public static final String SQL_DELETE_CAR = "DELETE FROM cars WHERE id_car = ?;";
+    public static final String SQL_DELETE_CAR = "DELETE FROM cars WHERE id_car = :idCar;";
 
-    private Connection connection;
-    private Statement statement;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public CarsDaoJdbcImpl(DataSource connection){
-        try{
-            this.connection = connection.getConnection();
-            statement = this.connection.createStatement();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+    public CarsDaoJdbcImpl(DataSource dataSource){
+        //this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
     @Override
     public List<Car> getAll() {
-        List<Car> allCars = new ArrayList<Car>();
-        try{
-            ResultSet result = statement.executeQuery(SQL_SELECT_ALL_CARS);
-            while(result.next()) {
-                allCars.add(new Car(result.getInt("id_car"), result.getString("brand"), result.getString("model"), result.getInt("mileage"), result.getString("colour")));
-            }
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return allCars;
+        return this.namedParameterJdbcTemplate.query(
+                SQL_SELECT_ALL_CARS,
+                new RowMapper<Car>() {
+                    @Override
+                    public Car mapRow(ResultSet result, int rowNum) throws SQLException {
+                        return new Car(result.getInt("id_car"), result.getString("brand"), result.getString("model"), result.getInt("mileage"), result.getString("colour"));
+                    }
+                });
     }
 
     @Override
@@ -60,50 +51,35 @@ public class CarsDaoJdbcImpl implements CarsDao {
 
     @Override
     public void add(Car car) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_CAR);
-
-            preparedStatement.setString(1, car.getBrand());
-            preparedStatement.setString(2, car.getModel());
-            preparedStatement.setInt(3, car.getMileage());
-            preparedStatement.setString(4, car.getColour());
-
-            preparedStatement.execute();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("brand", car.getBrand());
+        paramsMap.put("model", car.getModel());
+        paramsMap.put("mileage", car.getMileage());
+        paramsMap.put("colour", car.getColour());
+        this.namedParameterJdbcTemplate.update(
+                SQL_ADD_CAR, paramsMap
+        );
     }
 
     @Override
     public void update(Car car) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_CAR);
-
-            preparedStatement.setString(1, car.getBrand());
-            preparedStatement.setString(2, car.getModel());
-            preparedStatement.setInt(3, car.getMileage());
-            preparedStatement.setString(4, car.getColour());
-            preparedStatement.setInt(5, car.getId());
-
-            preparedStatement.execute();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("brand", car.getBrand());
+        paramsMap.put("model", car.getModel());
+        paramsMap.put("mileage", car.getMileage());
+        paramsMap.put("colour", car.getColour());
+        paramsMap.put("idCar", car.getId());
+        this.namedParameterJdbcTemplate.update(
+                SQL_UPDATE_CAR, paramsMap
+        );
     }
 
     @Override
     public void delete(int id) {
-        try{
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_CAR);
-
-            preparedStatement.setInt(1, id);
-
-            preparedStatement.execute();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("idCar", id);
+        this.namedParameterJdbcTemplate.update(
+                SQL_DELETE_CAR, paramsMap
+        );
     }
 }
