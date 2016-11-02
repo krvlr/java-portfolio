@@ -5,53 +5,15 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <display-name>testrestservlet</display-name>
     <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>servlets.LoginServlet</servlet-class>
+        <description></description>
+        <display-name>TestRestServlet</display-name>
+        <servlet-name>TestRestServlet</servlet-name>
+        <servlet-class>servlets.TestRestServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-
-    <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>filters.LoginFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/list</url-pattern>
-        <url-pattern>/addCar</url-pattern>
-    </filter-mapping>
-
-    <servlet>
-        <servlet-name>ListServlet</servlet-name>
-        <servlet-class>servlets.ListServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ListServlet</servlet-name>
-        <url-pattern>/list</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>Registration</servlet-name>
-        <servlet-class>servlets.RegistrationServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Registration</servlet-name>
-        <url-pattern>/registration</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>AddCar</servlet-name>
-        <servlet-class>servlets.AddCarServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>AddCar</servlet-name>
-        <url-pattern>/addCar</url-pattern>
+        <servlet-name>TestRestServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>

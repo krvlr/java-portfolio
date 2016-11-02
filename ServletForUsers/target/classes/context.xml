@@ -30,7 +30,4 @@
     <bean id="carsAndUsersService" class="service.CarsAndUsersServiceImpl">
         <constructor-arg ref="carsAndUsersDao"/>
     </bean>
-
-
-
 </beans>
