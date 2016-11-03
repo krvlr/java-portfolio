@@ -43,7 +43,6 @@ public class TestRestServlet extends HttpServlet {
     }
 
     private Pattern regAllUserPattern = Pattern.compile("/users");
-    private Pattern regUserAgePattern = Pattern.compile("/users\\?city=([a-zA-Z]+)");
     private Pattern regUserCarsPattern = Pattern.compile("/users/([0-9]+)/cars");
     private Pattern regAddCarForUserPattern = Pattern.compile("/users/([0-9]+)/addcars");
 
@@ -54,7 +53,20 @@ public class TestRestServlet extends HttpServlet {
 
         matcher = regAllUserPattern.matcher(request.getPathInfo());
         if (matcher.find()) {
-            stringResponse = objectMapper.writeValueAsString(usersService.getAllUser());
+            String userCity = request.getParameter("city");
+            if (userCity == null){
+                stringResponse = objectMapper.writeValueAsString(usersService.getAllUser());
+            }
+            else{
+                List<User> allUsers = usersService.getAllUser();
+                List<User> usersByCity = new ArrayList<User>();
+                for (User user : allUsers) {
+                    if (user.getCity().equals(userCity)){
+                        usersByCity.add(user);
+                    }
+                }
+                stringResponse = objectMapper.writeValueAsString(usersByCity);
+            }
         }
 
         matcher = regUserCarsPattern.matcher(request.getPathInfo());
@@ -68,19 +80,6 @@ public class TestRestServlet extends HttpServlet {
                 }
             }
             stringResponse = objectMapper.writeValueAsString(cars);
-        }
-
-        matcher = regUserAgePattern.matcher(request.getPathInfo());
-        if (matcher.find()) {
-            String userCity = request.getParameter("city");
-            List<User> allUsers = usersService.getAllUser();
-            List<User> usersByCity = new ArrayList<User>();
-            for (User user : allUsers) {
-                if (user.getCity().equals(userCity)){
-                    usersByCity.add(user);
-                }
-            }
-            stringResponse = objectMapper.writeValueAsString(usersByCity);
         }
 
         response.setContentType("application/json");

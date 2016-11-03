@@ -23,7 +23,6 @@ public class CarsDaoJdbcImpl implements CarsDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public CarsDaoJdbcImpl(DataSource dataSource){
-        //this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
