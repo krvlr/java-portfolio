@@ -1,0 +1,78 @@
+CREATE DATABASE comments
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+
+CREATE TABLE public."user"
+(
+    sex text,
+    country text,
+    email text NOT NULL,
+    password text NOT NULL,
+    name text NOT NULL,
+    user_id bigserial NOT NULL,
+    PRIMARY KEY (user_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."user"
+    OWNER to postgres;
+
+CREATE TABLE public.video_tutorial
+(
+    video_tutorial_id bigserial NOT NULL,
+    owner_id bigint NOT NULL,
+    description text,
+    PRIMARY KEY (video_tutorial_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.video_tutorial
+    OWNER to postgres;
+
+CREATE TABLE public.comment
+(
+    user_id bigint NOT NULL,
+    video_tutorial_id bigint NOT NULL,
+    comment text NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.comment
+    OWNER to postgres;
+
+ALTER TABLE public.comment
+    ADD CONSTRAINT user_id FOREIGN KEY (user_id)
+    REFERENCES public."user" (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+ALTER TABLE public.comment
+    ADD CONSTRAINT video_tutorial_id FOREIGN KEY (user_id)
+    REFERENCES public.video_tutorial (video_tutorial_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+ALTER TABLE public.video_tutorial
+    ADD CONSTRAINT owner_id FOREIGN KEY (video_tutorial_id)
+    REFERENCES public."user" (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+ALTER TABLE public.comment
+    ADD COLUMN comment_id bigserial NOT NULL;
+ALTER TABLE public.comment
+    ADD PRIMARY KEY (comment_id);
+
+ALTER TABLE public."user"
+    ADD COLUMN token text;

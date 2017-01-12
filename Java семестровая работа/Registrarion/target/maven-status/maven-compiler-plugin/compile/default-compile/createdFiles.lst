@@ -1,0 +1,12 @@
+ru\kpfu\Program.class
+ru\kpfu\service\UserService.class
+ru\kpfu\controller\LoginController.class
+ru\kpfu\service\UserServiceImpl.class
+ru\kpfu\controller\ProfileController.class
+ru\kpfu\dao\UserDao.class
+ru\kpfu\model\UserListWrapper.class
+ru\kpfu\configuration\AllConfiguration.class
+ru\kpfu\controller\RegistrationController.class
+ru\kpfu\dao\UserDaoXmlImpl.class
+ru\kpfu\model\User.class
+ru\kpfu\controller\ValidatorRegistrationForm.class

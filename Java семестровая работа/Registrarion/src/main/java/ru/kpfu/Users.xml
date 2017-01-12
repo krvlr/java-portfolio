@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <name>qqq</name>
+        <password>qqqqqqqqq</password>
+        <email>qq@qq.com</email>
+        <country>qqq</country>
+        <sex>M</sex>
+        <token></token>
+    </user>
+    <user>
+        <name>aaa</name>
+        <password>aaaaaaaaa</password>
+        <email>aaa@aaa.com</email>
+        <country>aaaaa</country>
+        <sex>M</sex>
+        <token>eme544dnnak9sqc1gcaaiu0ol9</token>
+    </user>
+</users>

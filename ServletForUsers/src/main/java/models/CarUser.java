@@ -9,11 +9,22 @@ public class CarUser {
         this.idUser = idUser;
     }
 
+    public CarUser(){
+    }
+
     public int getIdCar() {
         return idCar;
     }
 
     public int getIdUser() {
         return idUser;
+    }
+
+    public void setIdCar(int idCar) {
+        this.idCar = idCar;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

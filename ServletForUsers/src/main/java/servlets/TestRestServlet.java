@@ -90,9 +90,11 @@ public class TestRestServlet extends HttpServlet {
             throws ServletException, IOException {
         matcher = regAddCarForUserPattern.matcher(request.getPathInfo());
         if (matcher.find()) {
+            int idUser = Integer.parseInt(matcher.group(1));
             String stringRequest = request.getReader().readLine();
-            User myUser = objectMapper.readValue(stringRequest, User.class);
-            usersService.addUser(myUser);
+            Car myCar = objectMapper.readValue(stringRequest, Car.class);
+            carsService.addCar(myCar);
+            carsAndUsersService.addCarUser(myCar, usersService.findUserById(idUser));
         }
     }
 }

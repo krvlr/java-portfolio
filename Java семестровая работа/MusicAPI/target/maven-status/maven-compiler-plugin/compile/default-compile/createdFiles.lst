@@ -1,0 +1,7 @@
+ru\kpfu\util\ArtistJSONParser.class
+ru\kpfu\util\NamesTXTParser.class
+ru\kpfu\model\FavoriteArtist.class
+ru\kpfu\configuration\AllConfiguration.class
+ru\kpfu\dao\FavoriteArtistDao.class
+ru\kpfu\controller\ShowFavoriteArtistInfoController.class
+ru\kpfu\service\FavoriteArtistService.class

@@ -1,0 +1,6 @@
+ru\kpfu\configuration\AllConfiguration.class
+ru\kpfu\service\WeatherService.class
+ru\kpfu\dao\WeatherDao.class
+ru\kpfu\model\WeatherModel.class
+ru\kpfu\util\WeatherJSONParser.class
+ru\kpfu\controller\ShowWeatherController.class

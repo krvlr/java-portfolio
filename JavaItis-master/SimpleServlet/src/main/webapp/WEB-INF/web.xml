@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>ru.itis.servlets.Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri></taglib-uri>
+            <taglib-location>/WEB-INF/HelloTag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!--
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>ru.itis.filters.LogFilter</filter-class>
+        <init-param>
+            <param-name>message-param</param-name>
+            <param-value>FROM FILTER</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+    <listener>
+        <listener-class>ru.itis.configuration.SpringApplicationContextListener</listener-class>
+    </listener>
+</web-app>

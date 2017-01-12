@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="long-polling:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="long-polling-0.1.war">
+      <element id="artifact" artifact-name="long-polling:war exploded" />
+    </root>
+  </artifact>
+</component>
